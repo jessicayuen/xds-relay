@@ -197,7 +197,7 @@ func (o *orchestrator) watchUpstream(
 				// A problem occurred fetching the response upstream, log and
 				// return the most recent cached response, so that the
 				// downstream will reissue the discovery request.
-				o.logger.Error(ctx, "upstream error")
+				o.logger.With("key", aggregatedKey).Error(ctx, "upstream error")
 			} else {
 				// Cache the response.
 				_, err := o.cache.SetResponse(aggregatedKey, *x)
